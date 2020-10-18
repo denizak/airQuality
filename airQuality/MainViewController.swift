@@ -17,6 +17,7 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var originLabel: UILabel!
     @IBOutlet weak var weatherIconView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var currentCityContainer: UIView!
 
     private let disposeBag = DisposeBag()
     private let api = AirVisualApi()
@@ -49,6 +50,10 @@ final class MainViewController: UIViewController {
             .compactMap { URL(string: "https://www.airvisual.com/images/\($0).png") }
             .compactMap { getData(of: $0) }.map { UIImage(data: $0) }
             .drive(weatherIconView.rx.image)
+            .disposed(by: disposeBag)
+        cityData.map(\.pollution.airQualityIndexUS)
+            .compactMap { AirQualityIndexColor(UInt($0))?.getColor() }
+            .drive(currentCityContainer.rx.backgroundColor)
             .disposed(by: disposeBag)
     }
 

@@ -17,47 +17,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZ4-Ci-HkF">
-                                <rect key="frame" x="0.0" y="44" width="414" height="80"/>
+                                <rect key="frame" x="5" y="49" width="404" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDG-oG-bL9">
-                                        <rect key="frame" x="16" y="72" width="147" height="0.0"/>
+                                        <rect key="frame" x="16" y="72" width="142" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="z92-eK-VwL">
-                                        <rect key="frame" x="16" y="74" width="147" height="0.0"/>
+                                        <rect key="frame" x="16" y="74" width="142" height="0.0"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tTm-rp-8sf">
-                                        <rect key="frame" x="369" y="20" width="25" height="25"/>
+                                        <rect key="frame" x="359" y="20" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="EEK-rK-Lor"/>
                                             <constraint firstAttribute="height" constant="25" id="VzX-uM-GKN"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKa-SR-1GJ">
-                                        <rect key="frame" x="183" y="8" width="48" height="45.5"/>
+                                        <rect key="frame" x="178" y="8" width="48" height="45.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="38"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="InA-V6-VjN">
-                                        <rect key="frame" x="387" y="56" width="7" height="18"/>
+                                        <rect key="frame" x="377" y="56" width="7" height="18"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AQI US" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDT-n0-vSY">
-                                        <rect key="frame" x="183" y="56" width="48" height="18"/>
+                                        <rect key="frame" x="178" y="56" width="48" height="18"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hem-bY-dZb">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="80"/>
                                         <connections>
                                             <segue destination="u85-dY-Zxt" kind="presentation" id="oe8-8M-OQs"/>
                                         </connections>
@@ -92,14 +92,15 @@
                         <viewLayoutGuide key="safeArea" id="Pap-T3-LY0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rZ4-Ci-HkF" firstAttribute="leading" secondItem="Pap-T3-LY0" secondAttribute="leading" id="1sk-Gd-Qvu"/>
-                            <constraint firstItem="rZ4-Ci-HkF" firstAttribute="top" secondItem="Pap-T3-LY0" secondAttribute="top" id="YZn-xA-enG"/>
-                            <constraint firstItem="Pap-T3-LY0" firstAttribute="trailing" secondItem="rZ4-Ci-HkF" secondAttribute="trailing" id="uP1-9F-jqR"/>
+                            <constraint firstItem="rZ4-Ci-HkF" firstAttribute="leading" secondItem="Pap-T3-LY0" secondAttribute="leading" constant="5" id="1sk-Gd-Qvu"/>
+                            <constraint firstItem="rZ4-Ci-HkF" firstAttribute="top" secondItem="Pap-T3-LY0" secondAttribute="top" constant="5" id="YZn-xA-enG"/>
+                            <constraint firstItem="Pap-T3-LY0" firstAttribute="trailing" secondItem="rZ4-Ci-HkF" secondAttribute="trailing" constant="5" id="uP1-9F-jqR"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="aqiUSLabel" destination="NKa-SR-1GJ" id="dQh-Ag-2be"/>
                         <outlet property="cityLabel" destination="eDG-oG-bL9" id="h8i-H5-0iS"/>
+                        <outlet property="currentCityContainer" destination="rZ4-Ci-HkF" id="AiH-EL-f8M"/>
                         <outlet property="originLabel" destination="z92-eK-VwL" id="rrz-Cj-HLa"/>
                         <outlet property="temperatureLabel" destination="InA-V6-VjN" id="69u-qu-U6k"/>
                         <outlet property="weatherIconView" destination="tTm-rp-8sf" id="yCv-Qo-Dyj"/>
