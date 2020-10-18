@@ -73,10 +73,30 @@ final class AirVisualApi {
             .map { $0.data.map { $0.city } }
     }
 
-    func getNearestCityInfo() -> Observable<CityData> {
+    func getNearestCityData() -> Observable<CityData> {
         guard let url = createURL(host: host,
                                   path: "nearest_city",
                                   key: apiKey)
+        else { return Observable.error(APIError.failedToCreateURL) }
+
+        let urlRequest = URLRequest(url: url)
+
+        return URLSession.shared.rx.data(request: urlRequest)
+            .map {
+                try JSONDecoder().decode(CityDataResponse.self, from: $0)
+            }
+            .map { $0.toCityData() }
+    }
+
+    func getCityData(_ city: String, state: String, country: String) -> Observable<CityData> {
+        guard let url = createURL(host: host,
+                                  path: "city",
+                                  key: apiKey,
+                                  param: [
+                                    "city": city,
+                                    "state": state,
+                                    "country": country
+                                  ])
         else { return Observable.error(APIError.failedToCreateURL) }
 
         let urlRequest = URLRequest(url: url)
