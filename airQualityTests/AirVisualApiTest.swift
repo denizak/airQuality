@@ -7,13 +7,20 @@
 
 import XCTest
 
-import RxSwift
-import RxCocoa
+import RxBlocking
 
-class AirVisualApiTest: XCTestCase {
+@testable import airQuality
 
-    func testGetCountries() {
-        
+final class AirVisualApiTest: XCTestCase {
+
+    func testGetCountries() throws {
+        let api = AirVisualApi()
+
+        let countries = try api.getCountries().toBlocking().first()!
+
+        XCTAssertGreaterThan(countries.count, 0)
+        XCTAssertEqual(countries.first, "Afghanistan")
+        XCTAssertEqual(countries.last, "Yemen")
     }
 
 }
