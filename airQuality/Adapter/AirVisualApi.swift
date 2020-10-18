@@ -12,6 +12,7 @@ import RxCocoa
 
 typealias CountryName = String
 typealias StateName = String
+typealias CityName = String
 
 enum APIError: Error {
     case failedToCreateURL
@@ -51,6 +52,25 @@ final class AirVisualApi {
                 try JSONDecoder().decode(StateResponse.self, from: $0)
             }
             .map { $0.data.map { $0.state } }
+    }
+
+    func getCities(of state: String, country: String) -> Observable<[CityName]> {
+        guard let url = createURL(host: host,
+                                  path: "cities",
+                                  key: apiKey,
+                                  param: [
+                                    "state": state,
+                                    "country": country
+                                  ])
+        else { return Observable.error(APIError.failedToCreateURL) }
+
+        let urlRequest = URLRequest(url: url)
+
+        return URLSession.shared.rx.data(request: urlRequest)
+            .map {
+                try JSONDecoder().decode(CityResponse.self, from: $0)
+            }
+            .map { $0.data.map { $0.city } }
     }
 
     private func createURL(host: String,
