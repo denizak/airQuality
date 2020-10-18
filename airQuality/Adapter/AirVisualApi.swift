@@ -73,6 +73,21 @@ final class AirVisualApi {
             .map { $0.data.map { $0.city } }
     }
 
+    func getNearestCityInfo() -> Observable<CityData> {
+        guard let url = createURL(host: host,
+                                  path: "nearest_city",
+                                  key: apiKey)
+        else { return Observable.error(APIError.failedToCreateURL) }
+
+        let urlRequest = URLRequest(url: url)
+
+        return URLSession.shared.rx.data(request: urlRequest)
+            .map {
+                try JSONDecoder().decode(CityDataResponse.self, from: $0)
+            }
+            .map { $0.toCityData() }
+    }
+
     private func createURL(host: String,
                            path: String,
                            key: String,
@@ -89,5 +104,54 @@ final class AirVisualApi {
         urlComponents.queryItems = paramQueryItems + [keyQueryItems]
 
         return urlComponents.url
+    }
+}
+
+extension CityDataResponse {
+    func toCityData() -> CityData {
+
+        return CityData(city: data.city,
+                        state: data.state,
+                        country: data.country,
+                        location: getCityLocation(),
+                        weather: getCityWeather(),
+                        pollution: getCityPollution())
+    }
+
+    private func getCityPollution() -> CityPollution {
+        let pollution = data.current.pollution
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions =  [.withInternetDateTime, .withFractionalSeconds]
+        let time = formatter.date(from: pollution.timestamp)
+
+        return CityPollution(timestamp: time,
+                             airQualityIndexUS: pollution.airQualityIndexUS,
+                             mainPollutantUS: pollution.mainPollutantUS,
+                             airQualityIndexChina: pollution.airQualityIndexChina,
+                             mainPollutantChina: pollution.mainPollutantChina)
+    }
+
+    private func getCityWeather() -> CityWeather {
+        let weather = data.current.weather
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions =  [.withInternetDateTime, .withFractionalSeconds]
+        let time = formatter.date(from: weather.timestamp)
+
+        return CityWeather(timestamp: time,
+                           temperature: weather.temperature,
+                           pressure: weather.pressure,
+                           humidity: weather.humidity,
+                           windSpeed: weather.windSpeed,
+                           windDirection: weather.windDirection,
+                           icon: weather.iconCode)
+    }
+
+    private func getCityLocation() -> CityLocation? {
+        let location = data.location
+        guard location.coordinates.count >= 2 else { return nil }
+
+        return CityLocation(
+            latitude: location.coordinates[0],
+            longitude: location.coordinates[1])
     }
 }

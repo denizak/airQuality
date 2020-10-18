@@ -45,4 +45,15 @@ final class AirVisualApiTest: XCTestCase {
         XCTAssertEqual(cities.first!, "Denpasar")
     }
 
+    func testGetNearestCityData() throws {
+        let api = AirVisualApi()
+
+        let nearestCityData = try api.getNearestCityInfo().toBlocking().first()
+
+        XCTAssertNotNil(nearestCityData)
+        XCTAssertFalse(nearestCityData!.city.isEmpty)
+        XCTAssertNotNil(nearestCityData!.weather.timestamp)
+        XCTAssertNotNil(nearestCityData!.pollution.timestamp)
+    }
+
 }

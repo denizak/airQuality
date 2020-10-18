@@ -14,6 +14,8 @@
 		6091D6E0253C18B8002046DA /* CountryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6091D6DF253C18B8002046DA /* CountryResponse.swift */; };
 		6091D6EE253C1EC4002046DA /* StateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6091D6ED253C1EC4002046DA /* StateResponse.swift */; };
 		6091D6F2253C20EC002046DA /* CityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6091D6F1253C20EC002046DA /* CityResponse.swift */; };
+		6091D6F6253C2B5F002046DA /* CityDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6091D6F5253C2B5F002046DA /* CityDataResponse.swift */; };
+		6091D6FD253C2FB3002046DA /* CityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6091D6FC253C2FB3002046DA /* CityData.swift */; };
 		60DFC73F253B3E8800D20727 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DFC73E253B3E8800D20727 /* AppDelegate.swift */; };
 		60DFC741253B3E8800D20727 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DFC740253B3E8800D20727 /* SceneDelegate.swift */; };
 		60DFC743253B3E8800D20727 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DFC742253B3E8800D20727 /* ViewController.swift */; };
@@ -109,6 +111,8 @@
 		6091D6DF253C18B8002046DA /* CountryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryResponse.swift; sourceTree = "<group>"; };
 		6091D6ED253C1EC4002046DA /* StateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateResponse.swift; sourceTree = "<group>"; };
 		6091D6F1253C20EC002046DA /* CityResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityResponse.swift; sourceTree = "<group>"; };
+		6091D6F5253C2B5F002046DA /* CityDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDataResponse.swift; sourceTree = "<group>"; };
+		6091D6FC253C2FB3002046DA /* CityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityData.swift; sourceTree = "<group>"; };
 		60DFC73B253B3E8800D20727 /* airQuality.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = airQuality.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60DFC73E253B3E8800D20727 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60DFC740253B3E8800D20727 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +166,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6091D6FB253C2FA4002046DA /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				6091D6FC253C2FB3002046DA /* CityData.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		60DFC732253B3E8800D20727 = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +197,7 @@
 		60DFC73D253B3E8800D20727 /* airQuality */ = {
 			isa = PBXGroup;
 			children = (
+				6091D6FB253C2FA4002046DA /* Entity */,
 				60DFC795253B414600D20727 /* Adapter */,
 				60DFC73E253B3E8800D20727 /* AppDelegate.swift */,
 				60DFC740253B3E8800D20727 /* SceneDelegate.swift */,
@@ -213,6 +226,7 @@
 				6091D6DF253C18B8002046DA /* CountryResponse.swift */,
 				6091D6ED253C1EC4002046DA /* StateResponse.swift */,
 				6091D6F1253C20EC002046DA /* CityResponse.swift */,
+				6091D6F5253C2B5F002046DA /* CityDataResponse.swift */,
 			);
 			path = Adapter;
 			sourceTree = "<group>";
@@ -414,8 +428,10 @@
 				6091D6F2253C20EC002046DA /* CityResponse.swift in Sources */,
 				6091D6EE253C1EC4002046DA /* StateResponse.swift in Sources */,
 				60DFC743253B3E8800D20727 /* ViewController.swift in Sources */,
+				6091D6FD253C2FB3002046DA /* CityData.swift in Sources */,
 				60DFC73F253B3E8800D20727 /* AppDelegate.swift in Sources */,
 				60DFC741253B3E8800D20727 /* SceneDelegate.swift in Sources */,
+				6091D6F6253C2B5F002046DA /* CityDataResponse.swift in Sources */,
 				6091D6E0253C18B8002046DA /* CountryResponse.swift in Sources */,
 				60DFC797253B415900D20727 /* AirVisualApi.swift in Sources */,
 			);
