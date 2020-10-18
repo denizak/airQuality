@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 
 typealias CountryName = String
+typealias StateName = String
 
 enum APIError: Error {
     case failedToCreateURL
@@ -36,14 +37,36 @@ final class AirVisualApi {
             .map { $0.data.map { $0.country } }
     }
 
-    private func createURL(host: String, path: String, key: String) -> URL? {
+    func getStates(of country: String) -> Observable<[StateName]> {
+        guard let url = createURL(host: host,
+                                  path: "states",
+                                  key: apiKey,
+                                  param: ["country": country])
+        else { return Observable.error(APIError.failedToCreateURL) }
+
+        let urlRequest = URLRequest(url: url)
+
+        return URLSession.shared.rx.data(request: urlRequest)
+            .map {
+                try JSONDecoder().decode(StateResponse.self, from: $0)
+            }
+            .map { $0.data.map { $0.state } }
+    }
+
+    private func createURL(host: String,
+                           path: String,
+                           key: String,
+                           param: [String: String] = [:]) -> URL? {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = host
         urlComponents.path = "/v2/\(path)"
 
         let keyQueryItems = URLQueryItem(name: "key", value: key)
-        urlComponents.queryItems = [keyQueryItems]
+        let paramQueryItems: [URLQueryItem] = param.keys
+            .map { URLQueryItem(name: $0, value: param[$0]) }
+
+        urlComponents.queryItems = paramQueryItems + [keyQueryItems]
 
         return urlComponents.url
     }

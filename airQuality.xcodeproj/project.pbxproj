@@ -12,6 +12,7 @@
 		6091D6DB253C15DA002046DA /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6091D6BA253C15C2002046DA /* RxSwift.framework */; };
 		6091D6DC253C15E2002046DA /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6091D6C0253C15C2002046DA /* RxBlocking.framework */; };
 		6091D6E0253C18B8002046DA /* CountryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6091D6DF253C18B8002046DA /* CountryResponse.swift */; };
+		6091D6EE253C1EC4002046DA /* StateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6091D6ED253C1EC4002046DA /* StateResponse.swift */; };
 		60DFC73F253B3E8800D20727 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DFC73E253B3E8800D20727 /* AppDelegate.swift */; };
 		60DFC741253B3E8800D20727 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DFC740253B3E8800D20727 /* SceneDelegate.swift */; };
 		60DFC743253B3E8800D20727 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DFC742253B3E8800D20727 /* ViewController.swift */; };
@@ -105,6 +106,7 @@
 /* Begin PBXFileReference section */
 		6091D6AC253C15C2002046DA /* Rx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Rx.xcodeproj; path = RxSwift/Rx.xcodeproj; sourceTree = "<group>"; };
 		6091D6DF253C18B8002046DA /* CountryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryResponse.swift; sourceTree = "<group>"; };
+		6091D6ED253C1EC4002046DA /* StateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateResponse.swift; sourceTree = "<group>"; };
 		60DFC73B253B3E8800D20727 /* airQuality.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = airQuality.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60DFC73E253B3E8800D20727 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60DFC740253B3E8800D20727 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				60DFC796253B415900D20727 /* AirVisualApi.swift */,
 				6091D6DF253C18B8002046DA /* CountryResponse.swift */,
+				6091D6ED253C1EC4002046DA /* StateResponse.swift */,
 			);
 			path = Adapter;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6091D6EE253C1EC4002046DA /* StateResponse.swift in Sources */,
 				60DFC743253B3E8800D20727 /* ViewController.swift in Sources */,
 				60DFC73F253B3E8800D20727 /* AppDelegate.swift in Sources */,
 				60DFC741253B3E8800D20727 /* SceneDelegate.swift in Sources */,

@@ -23,4 +23,14 @@ final class AirVisualApiTest: XCTestCase {
         XCTAssertEqual(countries.last, "Yemen")
     }
 
+    func testGetStates() throws {
+        let api = AirVisualApi()
+        let country = "Indonesia"
+
+        let states = try api.getStates(of: country).toBlocking().first()!
+
+        XCTAssertGreaterThan(states.count, 0)
+        XCTAssertEqual(states.first, "Bali")
+    }
+
 }
