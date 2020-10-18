@@ -16,6 +16,7 @@
 		6091D6F2253C20EC002046DA /* CityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6091D6F1253C20EC002046DA /* CityResponse.swift */; };
 		6091D6F6253C2B5F002046DA /* CityDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6091D6F5253C2B5F002046DA /* CityDataResponse.swift */; };
 		6091D6FD253C2FB3002046DA /* CityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6091D6FC253C2FB3002046DA /* CityData.swift */; };
+		6091D703253C5806002046DA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6091D702253C5806002046DA /* MainViewController.swift */; };
 		60DFC73F253B3E8800D20727 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DFC73E253B3E8800D20727 /* AppDelegate.swift */; };
 		60DFC741253B3E8800D20727 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DFC740253B3E8800D20727 /* SceneDelegate.swift */; };
 		60DFC743253B3E8800D20727 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DFC742253B3E8800D20727 /* ViewController.swift */; };
@@ -113,6 +114,7 @@
 		6091D6F1253C20EC002046DA /* CityResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityResponse.swift; sourceTree = "<group>"; };
 		6091D6F5253C2B5F002046DA /* CityDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDataResponse.swift; sourceTree = "<group>"; };
 		6091D6FC253C2FB3002046DA /* CityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityData.swift; sourceTree = "<group>"; };
+		6091D702253C5806002046DA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		60DFC73B253B3E8800D20727 /* airQuality.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = airQuality.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60DFC73E253B3E8800D20727 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60DFC740253B3E8800D20727 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				60DFC747253B3E8B00D20727 /* Assets.xcassets */,
 				60DFC749253B3E8B00D20727 /* LaunchScreen.storyboard */,
 				60DFC74C253B3E8B00D20727 /* Info.plist */,
+				6091D702253C5806002046DA /* MainViewController.swift */,
 			);
 			path = airQuality;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				6091D6F6253C2B5F002046DA /* CityDataResponse.swift in Sources */,
 				6091D6E0253C18B8002046DA /* CountryResponse.swift in Sources */,
 				60DFC797253B415900D20727 /* AirVisualApi.swift in Sources */,
+				6091D703253C5806002046DA /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
