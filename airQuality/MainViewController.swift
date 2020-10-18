@@ -20,12 +20,18 @@ final class MainViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
     private let api = AirVisualApi()
+    private let indicator = UIActivityIndicatorView(style: .large)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let cityData = api.getNearestCityData()
             .asDriver(onErrorDriveWith: .empty())
+            .do { [weak self] _ in
+                self?.hideLoadingIndicator()
+            } onSubscribed: { [weak self] in
+                self?.showLoadingIndicator()
+            }
 
         cityData.map { $0.city }
             .drive(cityLabel.rx.text)
@@ -46,6 +52,15 @@ final class MainViewController: UIViewController {
             .disposed(by: disposeBag)
     }
 
+    private func showLoadingIndicator() {
+        indicator.center = view.center
+        indicator.startAnimating()
+        view.addSubview(indicator)
+    }
+
+    private func hideLoadingIndicator() {
+        indicator.removeFromSuperview()
+    }
 }
 
 private func getData(of url: URL) -> Data? {
