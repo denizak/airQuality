@@ -37,25 +37,6 @@ final class DetailViewController: UIViewController {
         windSpeedValueLabel.text = "\(cityData.weather.windSpeed) m/s"
         windDirectionValueLabel.text = "\(cityData.weather.windDirection)"
 
-        loadWeatherIcon(iconName: cityData.weather.icon)
-    }
-
-    private func loadWeatherIcon(iconName: String) {
-        DispatchQueue.global(qos: .default)
-            .async {
-                let urlString = "https://www.airvisual.com/images/\(iconName).png"
-                if let url = URL(string: urlString) {
-                    do {
-                        let data = try Data(contentsOf: url)
-                        let image = UIImage(data: data)
-
-                        DispatchQueue.main.async {
-                            self.weatherIconView.image = image
-                        }
-                    } catch {
-                        os_log(.error, "unable to retrieve icon data")
-                    }
-                }
-            }
+        weatherIconView.loadWeatherIcon(index: cityData.weather.icon)
     }
 }
