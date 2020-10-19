@@ -18,7 +18,15 @@ enum APIError: Error {
     case failedToCreateURL
 }
 
-final class AirVisualApi {
+protocol CityDataApi {
+    func getCountries() -> Observable<[CountryName]>
+    func getStates(of country: String) -> Observable<[StateName]>
+    func getCities(of state: String, country: String) -> Observable<[CityName]>
+    func getNearestCityData() -> Observable<CityData>
+    func getCityData(_ city: String, state: String, country: String) -> Observable<CityData>
+}
+
+final class AirVisualApi: CityDataApi {
 
     private let apiKey = "380074c3-c22c-4bfc-9b00-b666017b344f"
     private let host = "api.airvisual.com"

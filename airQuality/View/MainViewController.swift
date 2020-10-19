@@ -32,8 +32,8 @@ final class MainViewController: UIViewController {
     private let citySelectionDisposable = SerialDisposable()
     private let disposeBag = DisposeBag()
     private let api = AirVisualApi()
+    private let nearestViewModel = NearestCityViewModel()
     private let indicator = UIActivityIndicatorView(style: .large)
-    private var nearestCityData: CityData?
     private var selectedCityData: CityData?
     private var citySelectionsData = PublishRelay<[CityData]>()
 
@@ -59,7 +59,7 @@ final class MainViewController: UIViewController {
            segue.identifier == "showDetail" {
             viewController.cityData = selectedCityData
         } else if let viewController = segue.destination as? DetailViewController {
-            viewController.cityData = nearestCityData
+            viewController.cityData = nearestViewModel.cityData
         } else if let navigationController = segue.destination as? UINavigationController,
                   let viewController = navigationController.viewControllers.first as? CityPickerViewController {
             viewController.delegate = self
@@ -72,37 +72,37 @@ final class MainViewController: UIViewController {
     }
 
     private func setupNearestCity() {
-        let nearestCityData = api.getNearestCityData()
-            .asDriver(onErrorDriveWith: .empty())
-            .do { [weak self] _ in
-                self?.hideLoadingIndicator()
-            } onSubscribed: { [weak self] in
-                self?.showLoadingIndicator()
-            }
-
-        nearestCityData.drive(onNext: { [weak self] data in self?.nearestCityData = data })
-            .disposed(by: disposeBag)
-        nearestCityData.map { $0.city }
+        nearestViewModel.cityName
             .drive(cityLabel.rx.text)
             .disposed(by: disposeBag)
-        nearestCityData.map { "\($0.state), \($0.country)" }
+        nearestViewModel.originName
             .drive(originLabel.rx.text)
             .disposed(by: disposeBag)
-        nearestCityData.map(\.pollution.airQualityIndexUS).map { "\($0)" }
+        nearestViewModel.airQualityIndex
             .drive(aqiUSLabel.rx.text)
             .disposed(by: disposeBag)
-        nearestCityData.map(\.weather.temperature).map { "\($0)°C" }
+        nearestViewModel.temperature
             .drive(temperatureLabel.rx.text)
             .disposed(by: disposeBag)
-        nearestCityData.map(\.weather.icon)
-            .drive(onNext: { [weak self] index in
-                self?.weatherIconView.loadWeatherIcon(index: index)
-            })
-            .disposed(by: disposeBag)
-        nearestCityData.map(\.pollution.airQualityIndexUS)
-            .compactMap { AirQualityIndexColor(UInt($0))?.getColor() }
+        nearestViewModel.weatherIcon
+            .drive { [weak self] icon in
+                self?.weatherIconView.loadWeatherIcon(index: icon)
+            }.disposed(by: disposeBag)
+        nearestViewModel.airQualityColor
             .drive(currentCityContainer.rx.backgroundColor)
             .disposed(by: disposeBag)
+        nearestViewModel.hideLoadingIndicator
+            .drive { [weak self] _ in
+                self?.hideLoadingIndicator()
+            }
+            .disposed(by: disposeBag)
+        nearestViewModel.showLoadingIndicator
+            .drive { [weak self] _ in
+                self?.showLoadingIndicator()
+            }
+            .disposed(by: disposeBag)
+
+        nearestViewModel.getData()
     }
 
     private func addCity(_ citySelection: CityItemSelection) {
