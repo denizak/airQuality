@@ -34,6 +34,7 @@ final class MainViewController: UIViewController {
     private let api = AirVisualApi()
     private let indicator = UIActivityIndicatorView(style: .large)
     private var nearestCityData: CityData?
+    private var selectedCityData: CityData?
     private var citySelectionsData = PublishRelay<[CityData]>()
 
     private var citySelections: [CityItemSelection] = []
@@ -54,7 +55,10 @@ final class MainViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let viewController = segue.destination as? DetailViewController {
+        if let viewController = segue.destination as? DetailViewController,
+           segue.identifier == "showDetail" {
+            viewController.cityData = selectedCityData
+        } else if let viewController = segue.destination as? DetailViewController {
             viewController.cityData = nearestCityData
         } else if let navigationController = segue.destination as? UINavigationController,
                   let viewController = navigationController.viewControllers.first as? CityPickerViewController {
@@ -136,6 +140,11 @@ final class MainViewController: UIViewController {
 
                 cell.setup(data: model)
             }.disposed(by: disposeBag)
+        cityList.rx.modelSelected(CityData.self)
+            .subscribe(onNext: { [unowned self] cityData in
+                self.selectedCityData = cityData
+                self.performSegue(withIdentifier: "showDetail", sender: self)
+            }).disposed(by: disposeBag)
     }
 
     private func showLoadingIndicator() {

@@ -29,6 +29,7 @@ final class CityInfoCell: UITableViewCell {
         originLabel.text = "\(data.state), \(data.country)"
         aqiUSLabel.text = "\(data.pollution.airQualityIndexUS)"
         temperatureLabel.text = "\(data.weather.temperature)°C"
+        weatherIconView.loadWeatherIcon(index: data.weather.icon)
 
         containerView.backgroundColor = AirQualityIndexColor(UInt(data.pollution.airQualityIndexUS))?
             .getColor()

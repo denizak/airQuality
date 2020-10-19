@@ -201,6 +201,7 @@
                         <outlet property="temperatureLabel" destination="InA-V6-VjN" id="69u-qu-U6k"/>
                         <outlet property="weatherIconView" destination="tTm-rp-8sf" id="yCv-Qo-Dyj"/>
                         <segue destination="3sv-7M-JbF" kind="presentation" identifier="showCityPicker" id="d9c-l9-EpD"/>
+                        <segue destination="u85-dY-Zxt" kind="presentation" identifier="showDetail" id="oRs-Nv-IH5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iHj-mV-RaG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -511,6 +512,7 @@
                             <constraint firstItem="z4Z-sO-eOa" firstAttribute="top" secondItem="Gnl-WP-ClC" secondAttribute="top" constant="20" id="sWW-tE-Oic"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="puc-Hc-pui"/>
                     <connections>
                         <outlet property="aqiUSLabel" destination="Iqo-HV-M6R" id="5Bw-e0-Ktf"/>
                         <outlet property="cityLabel" destination="aON-Us-Q6u" id="X2G-km-T26"/>
@@ -528,6 +530,9 @@
             <point key="canvasLocation" x="1911.594202898551" y="99.776785714285708"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="oRs-Nv-IH5"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

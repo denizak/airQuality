@@ -77,6 +77,7 @@ final class CityPickerViewController: UIViewController {
         let relay = PublishRelay<String>()
 
         api.getCities(of: state, country: country)
+            .catchAndReturn([])
             .bind(to: cityTableView.rx.items(cellIdentifier: "cell")) { _, cityName, cell in
                 cell.textLabel?.text = cityName
             }.disposed(by: disposeBag)
