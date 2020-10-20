@@ -25,11 +25,10 @@ final class MainViewController: UIViewController {
 
     private let citySelectionDisposable = SerialDisposable()
     private let disposeBag = DisposeBag()
-    private let api = AirVisualApi()
+    private let citySelectionListViewModel = CitySelectionListViewModel()
     private let nearestViewModel = NearestCityViewModel()
     private let indicator = UIActivityIndicatorView(style: .large)
     private var selectedCityData: CityData?
-    private var citySelectionsData = PublishRelay<[CityData]>()
 
     private var citySelectionStore = CitySelectionStorage()
 
@@ -45,7 +44,7 @@ final class MainViewController: UIViewController {
         setupNearestCity()
         setupSelectedCity()
 
-        loadSelectedCity()
+        citySelectionListViewModel.fetchSelectedCityData()
     }
 
     override func viewDidLayoutSubviews() {
@@ -110,7 +109,7 @@ final class MainViewController: UIViewController {
         _ = citySelectionStore.insert(city: citySelection.cityName,
                                       state: citySelection.stateName,
                                       country: citySelection.countryName)
-        loadSelectedCity()
+        citySelectionListViewModel.fetchSelectedCityData()
     }
 
     private func createAddCityButton() -> UIView {
@@ -125,20 +124,9 @@ final class MainViewController: UIViewController {
         return view
     }
 
-    private func loadSelectedCity() {
-        citySelectionDisposable.disposable = Observable.zip(
-            citySelectionStore.get().map { citySelection in
-                api.getCityData(citySelection.cityName,
-                                state: citySelection.stateName,
-                                country: citySelection.countryName)
-            }
-        )
-        .bind(to: citySelectionsData)
-    }
-
     private func setupSelectedCity() {
-        citySelectionsData
-            .bind(to: cityList.rx.items(cellIdentifier: "cell")) { _, model, cell in
+        citySelectionListViewModel.cityData
+            .drive(cityList.rx.items(cellIdentifier: "cell")) { _, model, cell in
                 guard let cell = cell as? CityInfoCell else { fatalError() }
 
                 cell.setup(data: model)
