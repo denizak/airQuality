@@ -43,6 +43,21 @@ final class CitySelectionListViewModelTest: XCTestCase {
 
         XCTAssertEqual(cityData.count, 1)
     }
+
+    func testAddCity() {
+        let viewModel = CitySelectionListViewModel(api: ApiStub(),
+                                                   citySelectionStore: citySelectionStore,
+                                                   cityDataStore: CityDataStorage(inMemory: true))
+        var cityData = [CityData]()
+        let disposable = viewModel.cityData.drive { cityData = $0 }
+        defer { disposable.dispose() }
+
+        viewModel.addCity(CityItemSelection(cityName: "City",
+                                            stateName: "State",
+                                            countryName: "Country"))
+
+        XCTAssertEqual(cityData.count, 1)
+    }
 }
 
 private func cityDataSample() -> CityData {

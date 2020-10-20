@@ -35,6 +35,13 @@ final class CitySelectionListViewModel {
         fetchFromRemote()
     }
 
+    func addCity(_ citySelection: CityItemSelection) {
+        _ = citySelectionStore.insert(city: citySelection.cityName,
+                                      state: citySelection.stateName,
+                                      country: citySelection.countryName)
+        fetchSelectedCityData()
+    }
+
     private func fetchFromLocal() {
         let items = citySelectionStore.get()
             .compactMap {

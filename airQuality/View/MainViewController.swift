@@ -23,18 +23,11 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var currentCityContainer: UIView!
 
-    private let citySelectionDisposable = SerialDisposable()
     private let disposeBag = DisposeBag()
     private let citySelectionListViewModel = CitySelectionListViewModel()
     private let nearestViewModel = NearestCityViewModel()
     private let indicator = UIActivityIndicatorView(style: .large)
     private var selectedCityData: CityData?
-
-    private var citySelectionStore = CitySelectionStorage()
-
-    deinit {
-        citySelectionDisposable.dispose()
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,10 +99,7 @@ final class MainViewController: UIViewController {
     }
 
     private func addCity(_ citySelection: CityItemSelection) {
-        _ = citySelectionStore.insert(city: citySelection.cityName,
-                                      state: citySelection.stateName,
-                                      country: citySelection.countryName)
-        citySelectionListViewModel.fetchSelectedCityData()
+        citySelectionListViewModel.addCity(citySelection)
     }
 
     private func createAddCityButton() -> UIView {
