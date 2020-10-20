@@ -48,6 +48,13 @@ final class MainViewController: UIViewController {
         loadSelectedCity()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        let addCityButton = cityList.tableFooterView?.subviews.first
+        addCityButton?.frame = CGRect(x: 0, y: 0, width: cityList.frame.width, height: 50)
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? DetailViewController,
            segue.identifier == "showDetail" {
