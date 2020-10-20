@@ -3,13 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		6058662C253DD53400C4DC72 /* UIImageView_WeatherIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6058662B253DD53400C4DC72 /* UIImageView_WeatherIcon.swift */; };
 		6058663B253DDC4F00C4DC72 /* NearestCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6058663A253DDC4F00C4DC72 /* NearestCityViewModel.swift */; };
 		60586641253DEC7C00C4DC72 /* NearestCityViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60586640253DEC7C00C4DC72 /* NearestCityViewModelTest.swift */; };
+		605AE733253EF8910057EB2B /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 605AE732253EF8910057EB2B /* SQLite */; };
+		605AE741253EF8E50057EB2B /* SQLiteWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605AE740253EF8E50057EB2B /* SQLiteWrapper.swift */; };
+		605AE747253EFBAE0057EB2B /* CityDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605AE746253EFBAE0057EB2B /* CityDataStorage.swift */; };
+		605AE74D253F04DF0057EB2B /* CitySelectionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605AE74C253F04DF0057EB2B /* CitySelectionStorage.swift */; };
+		605AE751253F05530057EB2B /* CityItemSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605AE750253F05530057EB2B /* CityItemSelection.swift */; };
+		605AE757253F066B0057EB2B /* CitySelectionStorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605AE756253F066B0057EB2B /* CitySelectionStorageTest.swift */; };
+		605AE75B253F07950057EB2B /* CityDataStorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605AE75A253F07950057EB2B /* CityDataStorageTest.swift */; };
 		6083DA09253DBE6A00B310E2 /* CityPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6083DA08253DBE6A00B310E2 /* CityPickerViewController.swift */; };
 		6091D6D9253C15DA002046DA /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6091D6BC253C15C2002046DA /* RxCocoa.framework */; };
 		6091D6DA253C15DA002046DA /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6091D6BE253C15C2002046DA /* RxRelay.framework */; };
@@ -118,6 +125,12 @@
 		6058662B253DD53400C4DC72 /* UIImageView_WeatherIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView_WeatherIcon.swift; sourceTree = "<group>"; };
 		6058663A253DDC4F00C4DC72 /* NearestCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestCityViewModel.swift; sourceTree = "<group>"; };
 		60586640253DEC7C00C4DC72 /* NearestCityViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestCityViewModelTest.swift; sourceTree = "<group>"; };
+		605AE740253EF8E50057EB2B /* SQLiteWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteWrapper.swift; sourceTree = "<group>"; };
+		605AE746253EFBAE0057EB2B /* CityDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDataStorage.swift; sourceTree = "<group>"; };
+		605AE74C253F04DF0057EB2B /* CitySelectionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySelectionStorage.swift; sourceTree = "<group>"; };
+		605AE750253F05530057EB2B /* CityItemSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityItemSelection.swift; sourceTree = "<group>"; };
+		605AE756253F066B0057EB2B /* CitySelectionStorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySelectionStorageTest.swift; sourceTree = "<group>"; };
+		605AE75A253F07950057EB2B /* CityDataStorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDataStorageTest.swift; sourceTree = "<group>"; };
 		6083DA08253DBE6A00B310E2 /* CityPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPickerViewController.swift; sourceTree = "<group>"; };
 		6091D6AC253C15C2002046DA /* Rx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Rx.xcodeproj; path = RxSwift/Rx.xcodeproj; sourceTree = "<group>"; };
 		6091D6DF253C18B8002046DA /* CountryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryResponse.swift; sourceTree = "<group>"; };
@@ -148,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				605AE733253EF8910057EB2B /* SQLite in Frameworks */,
 				6091D6D9253C15DA002046DA /* RxCocoa.framework in Frameworks */,
 				6091D6DA253C15DA002046DA /* RxRelay.framework in Frameworks */,
 				6091D6DB253C15DA002046DA /* RxSwift.framework in Frameworks */,
@@ -173,6 +187,27 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		605AE744253EFB770057EB2B /* ResponseModel */ = {
+			isa = PBXGroup;
+			children = (
+				6091D6DF253C18B8002046DA /* CountryResponse.swift */,
+				6091D6ED253C1EC4002046DA /* StateResponse.swift */,
+				6091D6F1253C20EC002046DA /* CityResponse.swift */,
+				6091D6F5253C2B5F002046DA /* CityDataResponse.swift */,
+			);
+			path = ResponseModel;
+			sourceTree = "<group>";
+		};
+		605AE745253EFB950057EB2B /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				605AE740253EF8E50057EB2B /* SQLiteWrapper.swift */,
+				605AE746253EFBAE0057EB2B /* CityDataStorage.swift */,
+				605AE74C253F04DF0057EB2B /* CitySelectionStorage.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		6091D6AD253C15C2002046DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +230,7 @@
 			children = (
 				6091D6FC253C2FB3002046DA /* CityData.swift */,
 				6091D706253C7B20002046DA /* AirQualityIndexColor.swift */,
+				605AE750253F05530057EB2B /* CityItemSelection.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -255,6 +291,8 @@
 				60DFC787253B402F00D20727 /* AirVisualApiTest.swift */,
 				6091D70C253C7D77002046DA /* AirQualityIndexColorTest.swift */,
 				60586640253DEC7C00C4DC72 /* NearestCityViewModelTest.swift */,
+				605AE756253F066B0057EB2B /* CitySelectionStorageTest.swift */,
+				605AE75A253F07950057EB2B /* CityDataStorageTest.swift */,
 			);
 			path = airQualityTests;
 			sourceTree = "<group>";
@@ -262,11 +300,9 @@
 		60DFC795253B414600D20727 /* Adapter */ = {
 			isa = PBXGroup;
 			children = (
+				605AE745253EFB950057EB2B /* Persistence */,
+				605AE744253EFB770057EB2B /* ResponseModel */,
 				60DFC796253B415900D20727 /* AirVisualApi.swift */,
-				6091D6DF253C18B8002046DA /* CountryResponse.swift */,
-				6091D6ED253C1EC4002046DA /* StateResponse.swift */,
-				6091D6F1253C20EC002046DA /* CityResponse.swift */,
-				6091D6F5253C2B5F002046DA /* CityDataResponse.swift */,
 			);
 			path = Adapter;
 			sourceTree = "<group>";
@@ -295,6 +331,7 @@
 			);
 			name = airQuality;
 			packageProductDependencies = (
+				605AE732253EF8910057EB2B /* SQLite */,
 			);
 			productName = airQuality;
 			productReference = 60DFC73B253B3E8800D20727 /* airQuality.app */;
@@ -349,6 +386,7 @@
 			);
 			mainGroup = 60DFC732253B3E8800D20727;
 			packageReferences = (
+				605AE731253EF8910057EB2B /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 			);
 			productRefGroup = 60DFC73C253B3E8800D20727 /* Products */;
 			projectDirPath = "";
@@ -466,20 +504,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				60A817C9253DA6DB000E73B7 /* DetailViewController.swift in Sources */,
+				605AE741253EF8E50057EB2B /* SQLiteWrapper.swift in Sources */,
 				6091D6F2253C20EC002046DA /* CityResponse.swift in Sources */,
 				6091D6EE253C1EC4002046DA /* StateResponse.swift in Sources */,
 				6091D6FD253C2FB3002046DA /* CityData.swift in Sources */,
 				60DFC73F253B3E8800D20727 /* AppDelegate.swift in Sources */,
 				60DFC741253B3E8800D20727 /* SceneDelegate.swift in Sources */,
+				605AE74D253F04DF0057EB2B /* CitySelectionStorage.swift in Sources */,
 				6091D707253C7B20002046DA /* AirQualityIndexColor.swift in Sources */,
 				6058663B253DDC4F00C4DC72 /* NearestCityViewModel.swift in Sources */,
 				6091D6F6253C2B5F002046DA /* CityDataResponse.swift in Sources */,
 				60EBADA6253DD2540008AA0B /* CityInfoCell.swift in Sources */,
 				6091D6E0253C18B8002046DA /* CountryResponse.swift in Sources */,
+				605AE747253EFBAE0057EB2B /* CityDataStorage.swift in Sources */,
 				60DFC797253B415900D20727 /* AirVisualApi.swift in Sources */,
 				6091D703253C5806002046DA /* MainViewController.swift in Sources */,
 				6058662C253DD53400C4DC72 /* UIImageView_WeatherIcon.swift in Sources */,
 				6083DA09253DBE6A00B310E2 /* CityPickerViewController.swift in Sources */,
+				605AE751253F05530057EB2B /* CityItemSelection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,8 +530,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				60DFC788253B402F00D20727 /* AirVisualApiTest.swift in Sources */,
+				605AE757253F066B0057EB2B /* CitySelectionStorageTest.swift in Sources */,
 				6091D70D253C7D77002046DA /* AirQualityIndexColorTest.swift in Sources */,
 				60586641253DEC7C00C4DC72 /* NearestCityViewModelTest.swift in Sources */,
+				605AE75B253F07950057EB2B /* CityDataStorageTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,6 +801,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		605AE731253EF8910057EB2B /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.12.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		605AE732253EF8910057EB2B /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 605AE731253EF8910057EB2B /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 60DFC733253B3E8800D20727 /* Project object */;
 }

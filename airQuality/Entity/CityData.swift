@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CityData {
+struct CityData: Equatable {
     let city: String
     let state: String
     let country: String
@@ -16,12 +16,12 @@ struct CityData {
     let pollution: CityPollution
 }
 
-struct CityLocation {
+struct CityLocation: Equatable {
     let latitude: Double
     let longitude: Double
 }
 
-struct CityWeather {
+struct CityWeather: Equatable {
     let timestamp: Date?
     let temperature: Int
     let pressure: Int
@@ -31,7 +31,7 @@ struct CityWeather {
     let icon: String
 }
 
-struct CityPollution {
+struct CityPollution: Equatable {
     let timestamp: Date?
     let airQualityIndexUS: Int
     let mainPollutantUS: String

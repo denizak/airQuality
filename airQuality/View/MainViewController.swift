@@ -13,12 +13,6 @@ import RxCocoa
 
 import os.log
 
-struct CityItemSelection {
-    let cityName: String
-    let stateName: String
-    let countryName: String
-}
-
 final class MainViewController: UIViewController {
     
     @IBOutlet weak var cityList: UITableView!
