@@ -31,7 +31,7 @@ final class MainViewController: UIViewController {
     private var selectedCityData: CityData?
     private var citySelectionsData = PublishRelay<[CityData]>()
 
-    private var citySelections: [CityItemSelection] = []
+    private var citySelectionStore = CitySelectionStorage()
 
     deinit {
         citySelectionDisposable.dispose()
@@ -100,7 +100,9 @@ final class MainViewController: UIViewController {
     }
 
     private func addCity(_ citySelection: CityItemSelection) {
-        citySelections.append(citySelection)
+        _ = citySelectionStore.insert(city: citySelection.cityName,
+                                      state: citySelection.stateName,
+                                      country: citySelection.countryName)
         loadSelectedCity()
     }
 
@@ -118,7 +120,7 @@ final class MainViewController: UIViewController {
 
     private func loadSelectedCity() {
         citySelectionDisposable.disposable = Observable.zip(
-            citySelections.map { citySelection in
+            citySelectionStore.get().map { citySelection in
                 api.getCityData(citySelection.cityName,
                                 state: citySelection.stateName,
                                 country: citySelection.countryName)
