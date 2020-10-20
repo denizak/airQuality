@@ -66,6 +66,8 @@ final class NearestCityViewModel {
         serialDisposable.disposable = cityDataApi.getNearestCityData()
             .do { [weak self] _ in
                 self?.hideLoadingRelay.accept(())
+            } onError: { [weak self] _ in
+                self?.hideLoadingRelay.accept(())
             } onSubscribed: { [weak self] in
                 self?.showLoadingRelay.accept(())
             }
