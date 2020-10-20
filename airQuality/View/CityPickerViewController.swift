@@ -43,6 +43,7 @@ final class CityPickerViewController: UIViewController {
     private func loadCountries() -> Observable<String> {
         let relay = PublishRelay<String>()
         api.getCountries()
+            .catchAndReturn([])
             .bind(to: countryTableView.rx.items(cellIdentifier: "cell")) { _, countryName, cell in
                 cell.textLabel?.text = countryName
             }.disposed(by: disposeBag)
@@ -60,6 +61,7 @@ final class CityPickerViewController: UIViewController {
         let relay = PublishRelay<String>()
 
         api.getStates(of: country)
+            .catchAndReturn([])
             .bind(to: stateTableView.rx.items(cellIdentifier: "cell")) { _, stateName, cell in
                 cell.textLabel?.text = stateName
             }.disposed(by: disposeBag)
